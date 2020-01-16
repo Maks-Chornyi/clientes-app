@@ -3,11 +3,11 @@
 </button>
 <div class="card">
   <div class="card-header" (click)="enable = true">
-    List of Courses
+    Listado de Corses
   </div>
   <ul class="list-group" *ngIf="enable == true">
-    <li class="list-group-item" *ngFor="let course of listOfCourses">
-      {{ course }}
+    <li class="list-group-item" *ngFor="let course of courses">
+      {{ course.title }}
     </li>
   </ul>
 </div>

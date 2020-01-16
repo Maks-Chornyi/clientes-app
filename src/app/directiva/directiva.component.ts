@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Course } from "./course";
+import { CourseService } from "./course.service";
 
 @Component({
   selector: "app-directiva",
@@ -8,11 +10,17 @@ import { Component, OnInit } from "@angular/core";
 export class DirectivaComponent implements OnInit {
   listOfCourses: string[] = ["TypeScript", "JavaScript", "Java", "C#", "PHP"];
   enable: boolean = true;
-  constructor() {}
+  courses: Course[];
+
+  constructor(private courseService: CourseService) {}
 
   setEnabled(): void {
     this.enable = this.enable == false ? true : false;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.courseService
+      .getCourses()
+      .subscribe(courses => (this.courses = courses));
+  }
 }
